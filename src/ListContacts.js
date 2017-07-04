@@ -6,7 +6,7 @@ import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 
 
-// rather thank use class extends Component,
+// rather than use class extends Component,
 // we deploy a stateless functional component
 class ListContacts extends Component {
 
