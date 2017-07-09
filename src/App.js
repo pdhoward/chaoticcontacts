@@ -1,40 +1,45 @@
-import React, { Component } from 'react';
-import ListContacts from './ListContacts';
+import React, { Component }   from 'react';
+import ListContacts           from './ListContacts';
+import * as ContactsAPI       from './utils/ContactsAPI'
+import CreateContact          from './CreateContacts'
+import { Route }              from 'react-router-dom'
+
+
 
 class App extends Component {
-
   state = {
-    contacts: [
-      {
-        "id": "pat",
-        "name": "Patrick Howard",
-        "email": "patrick.howard@xio.com",
-        "avatarURL": "http://localhost:5001/ryan.jpg"
-      },
-      {
-        "id": "bill",
-        "name": "Bill Smith",
-        "email": "bill@xio.com",
-        "avatarURL": "http://localhost:5001/michael.jpg"
-      },
-      {
-        "id": "sally",
-        "name": "Sally West",
-        "email": "sally@xio.com",
-        "avatarURL": "http://localhost:5001/tyler.jpg"
-      }
-    ]
+    contacts: [ ]
   }
 
   removeContact = (contact) => {
     this.setState( (state) => ({
       contacts: state.contacts.filter((c) => c.id !== contact.id )
     }) )
+    ContactsAPI.remove(contact)
+  }
+  addContact = (contact) => {
+    this.setState( (state) => ({
+      contacts: this.state.contacts.push(contact)
+    }) )
+    ContactsAPI.create(contact)
+  }
+
+  componentDidMount() {
+    ContactsAPI.getAll().then((contacts) => {
+      this.setState({ contacts })
+    })
   }
   render() {
     return (
-      <ListContacts onDeleteContact = { this.removeContact }
-                    contacts={this.state.contacts} />
+      <div className = 'app'>
+        <Route exact path ="/" render={() => (
+          <ListContacts
+            onDeleteContact = { this.removeContact }
+            contacts={this.state.contacts}
+            />
+        )} />
+      <Route path="/create" component={CreateContact} />
+       </div>
     );
   }
 }

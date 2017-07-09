@@ -1,9 +1,10 @@
 
 
-import React, {Component} from 'react'
-import PropTypes from 'prop-types'
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
+import React, {Component}     from 'react'
+import { Link }               from 'react-router-dom'
+import PropTypes              from 'prop-types'
+import escapeRegExp           from 'escape-string-regexp'
+import sortBy                 from 'sort-by'
 
 
 // rather than use class extends Component,
@@ -45,7 +46,6 @@ class ListContacts extends Component {
 
     return (
       <div className = 'list-contacts'>
-
         <div className = 'list-contacts-top'>
           <input
             className = 'search-contacts'
@@ -54,6 +54,11 @@ class ListContacts extends Component {
             value={this.state.query}
             onChange = { (event) => this.updateQuery(event.target.value)}
           />
+        <Link
+          to="/create"        
+          className = "add-contact"
+        >Add Contact</Link>
+
       </div>
 
       {showingContacts.length !== contacts.length && (
