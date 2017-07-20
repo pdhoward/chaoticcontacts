@@ -1,4 +1,9 @@
+'use strict';
 
+//////////////////////////////////////////////////////////////////////////
+/////////////////  Component Renders List of Contacts  //////////////////
+/////////////////    server side 'in memory' db    //////////////////////
+////////////////////////////////////////////////////////////////////////
 
 import React, {Component}     from 'react'
 import { Link }               from 'react-router-dom'
@@ -6,9 +11,6 @@ import PropTypes              from 'prop-types'
 import escapeRegExp           from 'escape-string-regexp'
 import sortBy                 from 'sort-by'
 
-
-// rather than use class extends Component,
-// we deploy a stateless functional component
 class ListContacts extends Component {
 
   static propTypes = {
@@ -55,7 +57,7 @@ class ListContacts extends Component {
             onChange = { (event) => this.updateQuery(event.target.value)}
           />
         <Link
-          to="/create"        
+          to="/create"
           className = "add-contact"
         >Add Contact</Link>
 

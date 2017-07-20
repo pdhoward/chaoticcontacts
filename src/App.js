@@ -1,10 +1,18 @@
+
+
+//////////////////////////////////////////////////////////////////////////
+/////////////////  Main App for Bot Contact Mgmt        //////////////////
+/////////////////    Connecting Business to Bots   //////////////////////
+////////////////////////////////////////////////////////////////////////
+
+
 import React, { Component }   from 'react';
 import ListContacts           from './ListContacts';
 import * as ContactsAPI       from './utils/ContactsAPI'
 import CreateContact          from './CreateContacts'
 import { Route }              from 'react-router-dom'
 
-
+// note lifecycle method to load all contacts when mounted
 
 class App extends Component {
   state = {
