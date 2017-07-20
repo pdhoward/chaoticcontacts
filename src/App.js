@@ -25,13 +25,17 @@ class App extends Component {
     }) )
     ContactsAPI.remove(contact)
   }
+
+  // included for illustration purposes. This could lead to unpredictable results
+  // by mutating state directly
   addContact = (contact) => {
     this.setState( (state) => ({
       contacts: this.state.contacts.push(contact)
     }) )
     ContactsAPI.create(contact)
   }
-
+  // this is the correct way to update state. Array.slice() and spread operators
+  // would also be apropriate
   createContact(contact) {
     ContactsAPI.create(contact).then(contact => {
       this.setState(state => ({
