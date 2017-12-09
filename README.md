@@ -13,7 +13,7 @@ Getting the server running on your local machine takes only a few steps:
 
 1. clone the project - `git clone https://github.com/pdhoward/contacts.git
 2. install its dependencies - `npm install`
-3. start the server - `node server.js`
+3. Built with create-react-app -- npm run start
 
 Also, install the backend db server
 
